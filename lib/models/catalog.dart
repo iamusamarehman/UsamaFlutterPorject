@@ -1,8 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-
 class CatalogModel {
   static List<Item> items = List.empty();
 }
@@ -75,6 +73,7 @@ class Item {
   }
 
   @override
+  // ignore: avoid_renaming_method_parameters
   bool operator ==(Object o) {
     if (identical(this, o)) return true;
 
