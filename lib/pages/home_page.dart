@@ -5,11 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:master_flutter/models/catalog.dart';
 import 'package:master_flutter/pages/utils/route.dart';
-import 'package:master_flutter/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../widgets/home_widgets/catalog_header.dart';
 import '../widgets/home_widgets/catalog_list.dart';
+// ignore: unused_import
+import '../widgets/themes.dart';
+
+// import 'package:flutter_catalog/widgets/themes.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -21,6 +24,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   // ignore: non_constant_identifier_names
   final int Days = 30;
+
+  get buttonColor => null;
   @override
   void initState() {
     // ignore: todo
@@ -44,11 +49,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: MyTheme.creamColor,
+        backgroundColor: context.cardColor,
         floatingActionButton: FloatingActionButton(
-          backgroundColor: MyTheme.darkBluishColor,
+          // ignore: deprecated_member_use
+          backgroundColor: Theme.of(context).indicatorColor,
           onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
-          child: const Icon(CupertinoIcons.cart),
+          child: const Icon(
+            CupertinoIcons.cart,
+            color: Colors.white,
+          ),
         ),
         body: SafeArea(
           child: Container(
