@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class MyTheme {
+  static get brightness => null;
+
   static ThemeData lightTheme(BuildContext context) => ThemeData(
       fontFamily: GoogleFonts.poppins().fontFamily,
       cardColor: Colors.white,
@@ -26,10 +28,13 @@ class MyTheme {
         iconTheme: const IconThemeData(color: Colors.black),
         toolbarTextStyle: Theme.of(context).textTheme.bodyText2,
         titleTextStyle: Theme.of(context).textTheme.headline6,
-      ));
+      ),
+      colorScheme:
+          ColorScheme.fromSwatch().copyWith(secondary: darkBluishColor));
 
   static ThemeData darkTheme(BuildContext context) => ThemeData(
-      brightness: Brightness.dark,
+      // brightness: Brightness.dark,
+
       fontFamily: GoogleFonts.poppins().fontFamily,
       cardColor: Colors.black,
       canvasColor: darkCreamColor,
@@ -62,7 +67,9 @@ class MyTheme {
                   context.textTheme.headline6?.copyWith(color: Colors.white),
             )
             .headline6,
-      ));
+      ),
+      colorScheme: ColorScheme.fromSwatch()
+          .copyWith(secondary: Colors.white, brightness: Brightness.dark));
   //Colors
   static Color creamColor = const Color(0xfff5f5f5);
   static Color darkCreamColor = Vx.gray900;
