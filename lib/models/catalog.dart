@@ -2,11 +2,6 @@
 import 'dart:convert';
 
 class CatalogModel {
-  static final catModel = CatalogModel._internal(); // singalton class
-  CatalogModel._internal(); // constructor
-
-  factory CatalogModel() => catModel;
-
   static List<Item> items = List.empty();
 
   // get item by id
