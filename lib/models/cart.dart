@@ -1,3 +1,7 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:velocity_x/velocity_x.dart';
+
+import 'package:master_flutter/core/store.dart';
 import 'package:master_flutter/models/catalog.dart';
 
 class CartModel {
@@ -29,5 +33,15 @@ class CartModel {
   // remove item
   void remove(Item item) {
     _itemIds.remove(item.id);
+  }
+}
+
+class AddMutation extends VxMutation<MyStore> {
+  final Item item;
+
+  AddMutation(this.item);
+  @override
+  perform() {
+    store?.cart?._itemIds.add(item.id);
   }
 }
