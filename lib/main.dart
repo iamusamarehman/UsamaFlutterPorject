@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:master_flutter/core/store.dart';
+import 'package:master_flutter/pages/cart_page.dart';
 import 'package:master_flutter/pages/home_page.dart';
 import 'package:master_flutter/pages/login_page.dart';
+// ignore: unused_import
 import 'package:google_fonts/google_fonts.dart';
+import 'package:master_flutter/pages/utils/route.dart';
+import 'package:master_flutter/widgets/themes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(VxState(store: MyStore(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -13,17 +19,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      themeMode: ThemeMode.light,
-      theme: ThemeData(
-          primarySwatch: Colors.deepPurple,
-          fontFamily: GoogleFonts.lato().fontFamily,
-          primaryTextTheme: GoogleFonts.latoTextTheme()),
-      darkTheme: ThemeData(brightness: Brightness.dark),
-      initialRoute: "/login",
+      themeMode: ThemeMode.system,
+      theme: MyTheme.lightTheme(context),
+      darkTheme: MyTheme.darkTheme(context),
+      debugShowCheckedModeBanner: false,
+      initialRoute: MyRoutes.homeRoute,
       routes: {
-        "/": (context) => LoginPage(),
-        "/home": (context) => HomePage(),
-        "/login": (context) => LoginPage()
+        "/": (context) => const LoginPage(),
+        MyRoutes.homeRoute: (context) => const HomePage(),
+        MyRoutes.loginRoute: (context) => const LoginPage(),
+        MyRoutes.cartRoute: (context) => const CartPage()
       },
     );
   }
